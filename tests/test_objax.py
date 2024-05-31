@@ -67,9 +67,9 @@ def test_serialize_and_deserialize_with_assignment(
     # Assign jnp.zeros to all params.tensors() to make sure the assignment is working
     # before we deserialize the params.
     params.assign([jnp.zeros(x.shape, x.dtype) for x in params.tensors()])
-    assert all([jnp.all(x == 0) for x in params.tensors()])
+    assert all(jnp.all(x == 0) for x in params.tensors())
 
     deserialize_with_assignment(filename=safetensors_file, model_vars=params)
     assert isinstance(params, VarCollection)
     assert len(params) > 0
-    assert not all([jnp.all(x != 0) for x in params.tensors()])
+    assert not all(jnp.all(x != 0) for x in params.tensors())

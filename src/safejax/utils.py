@@ -101,7 +101,9 @@ def unflatten_dict(params: Union[NumpyArrayDict, JaxDeviceArrayDict]) -> Dict[st
                 "ignored and unflattened normally. Anyway, when deserializing "
                 "`objax` models you should use `safejax.objax.deserialize` "
                 "or just use the function params in `safejax.deserialize`: "
-                "`requires_unflattening=False` and `to_var_collection=True`."
+                "`requires_unflattening=False` and `to_var_collection=True`.",
+                UserWarning,
+                stacklevel=2,
             )
             warned_user = True
         key = (
