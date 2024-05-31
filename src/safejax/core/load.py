@@ -84,7 +84,7 @@ def deserialize(
         try:
             return VarCollection(cast_objax_variables(params=decoded_params))
         except ValueError as e:
-            warnings.warn(e)
+            warnings.warn(repr(e), UserWarning, stacklevel=2)
         return decoded_params
     if requires_unflattening:
         decoded_params = unflatten_dict(params=decoded_params)

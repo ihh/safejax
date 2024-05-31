@@ -57,7 +57,9 @@ def serialize(
                 " set the `filename` param to dump the `metadata` along with the model"
                 " params in a file, either to be loaded back using `deserialize` from"
                 " `path_or_buf` or using `safetensors.safe_open`. More information at"
-                " https://github.com/huggingface/safetensors/issues/147."
+                " https://github.com/huggingface/safetensors/issues/147.",
+                UserWarning,
+                stacklevel=2,
             )
     if filename:
         if not isinstance(filename, (str, Path)):

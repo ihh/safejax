@@ -24,7 +24,9 @@ def assert_over_trees(params: ParamsDictLike, decoded_params: ParamsDictLike) ->
     """
     if isinstance(params, VarCollection) or isinstance(decoded_params, VarCollection):
         warnings.warn(
-            "This function does not support `objax.variable.VarCollection` objects yet."
+            "This function does not support `objax.variable.VarCollection` objects yet.",
+            UserWarning,
+            stacklevel=2,
         )
     else:
         params = unfreeze(params) if isinstance(params, FrozenDict) else params
